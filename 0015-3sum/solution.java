@@ -1,22 +1,20 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> list = new ArrayList();
-        int k = nums.length-1;
-        int j = 1;
+        List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
         for(int i = 0; i<nums.length; i++) {
-            k = nums.length-1;
-            j = i+1;
+            int j = i+1;
+            int k = nums.length-1;
             if(i>0 && nums[i] == nums[i-1]) {
                 continue;
-            }            
-            while(j < k) {
+            }
+            while(j<k) {
                 if(nums[i] + nums[j] + nums[k] == 0) {
-                    List<Integer> triplet = new ArrayList<Integer>();
+                    List<Integer> triplet = new ArrayList<>();
                     triplet.add(nums[i]);
                     triplet.add(nums[j]);
                     triplet.add(nums[k]);
-                    list.add(triplet);
+                    result.add(triplet);
                     j++;
                     k--;
                     while(j<k && nums[j] == nums[j-1]) {
@@ -34,6 +32,7 @@ class Solution {
                 }            
             }
         }
-        return list;
+        return result;
+
     }
 }
