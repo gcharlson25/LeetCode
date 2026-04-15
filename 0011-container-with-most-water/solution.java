@@ -3,19 +3,16 @@ class Solution {
         int start = 0;
         int end = height.length-1;
         int max = 0;
-        while(start < height.length && end >= 0) {
-            int area = 0;
-            if(height[start] <= height[end]) {
-                area = height[start] * (end-start);
-                start++;
+        while(start<end) {
+            if((Math.min(height[start], height[end])) * (end-start) > max) {
+                max = (Math.min(height[start], height[end])) * (end-start);
             }
-            else if(height[start] > height[end]) {
-                area = height[end] * (end-start);
+            if(height[start] >= height[end]) {
                 end--;
             }
-            if(area > max) {
-                max = area;
-            }
+            else if(height[start] < height[end]) {
+                start++;
+            }            
         }
         return max;
     }
