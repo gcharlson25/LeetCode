@@ -10,7 +10,7 @@ class Solution {
                 profit = prices[i] - min;
             }
         }
-        return profit;    
 
-    }
+        return profit;
+    }    
 }
