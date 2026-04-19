@@ -1,35 +1,19 @@
 
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<Character>();
-        for(int i = 0; i < s.length(); i++) {
-            char bracket = s.charAt(i);
-            if(bracket == '(' || bracket == '{' || bracket == '[') {
-                stack.push(bracket);
+        Stack <Character> stack = new Stack<>(); 
+        for(int i = 0; i<s.length(); i++) {
+            if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+                stack.push(s.charAt(i));
             }
-            else if(bracket == ')') {
-                if(!stack.isEmpty() && stack.peek() == '(') {
-                    stack.pop();
-                }
-                else {
-                    return false;
-                }
+            else if(s.charAt(i) == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
             }
-            else if(bracket == ']') {
-                if(!stack.isEmpty() && stack.peek() == '[') {
-                    stack.pop();
-                }
-                else {
-                    return false;
-                }
+            else if(s.charAt(i) == ']' && !stack.isEmpty() && stack.peek() == '[') {
+                stack.pop();
             }
-            else if(bracket == '}') {
-                if(!stack.isEmpty() && stack.peek() == '{') {
-                    stack.pop();
-                }
-                else {
-                    return false;
-                }
+            else if(s.charAt(i) == '}' && !stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
             }
             else {
                 return false;
